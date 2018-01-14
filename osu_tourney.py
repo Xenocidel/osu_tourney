@@ -17,6 +17,9 @@ class Gui():
         self.create_widgets(frame)
         figure1=self.canvas.create_rectangle(80, 80, 120, 120, fill="blue")
 
+        self.create_warmup(frame)
+        self.create_quit(frame)
+
     def create_preview(self):
         self.canvas = tk.Canvas(self.master, width = 1280, height = 720,
                             bg = "black" )
@@ -29,21 +32,21 @@ class Gui():
         player_title = Label(frame, text="Player "+str(number+1)).grid(row=1,column=number*2, sticky="n")
         twitter_label = Label(frame, text="Twitter").grid(row=2,column=number*2, sticky="w")
         twitch_label = Label(frame, text="Twitch").grid(row=3,column=number*2, sticky="w")
-        twitter = Entry(frame).grid(row = 2,column = number*2+1, sticky = E+W)
-        twitch = Entry(frame).grid(row = 3,column = number*2+1, sticky = E)
+        twitter = Entry(frame).grid(row = 2,column = number*2+1, padx = 10, pady = 5,sticky = E+W)
+        twitch = Entry(frame).grid(row = 3,column = number*2+1, padx = 10, pady = 5,sticky = E)
         
-    def create_warmup(self):
-        # create warmup toggle button
-        pass
+    def create_warmup(self, frame):
+        toggle_switch = tk.Button(frame, text = "Toggle Warmup")
+        toggle_switch.grid(row = 3, column = 5)
 
     def toggle_warmup(self):
         # show warmup image
         pass
         
-    def create_quit(self):
-        # not working
-        self.quit = Button(self, text="QUIT", fg="red",
-                              command=root.destroy)
+    def create_quit(self, frame):
+        self.quit = Button(frame, text="QUIT", fg="red",
+                              command=quit)
+        self.quit.grid(row = 4, column = 5)
         
 if __name__== '__main__':
     root=tk.Tk()
